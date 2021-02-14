@@ -1,0 +1,64 @@
+@import "variable/_grid";
+@import "variable/_variable";
+@import "variable/_mixins";
+
+//Single-Post#
+.single-post {
+    position: relative;
+    img {width: 100%}
+    .category {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: $secondary-color;
+        padding: 10px 20px;
+        @include weight(semi-bold);
+        cursor: pointer;
+        a {color: $base-color;}
+    }
+    h6 {
+        padding-top: 20px;
+        font-size: 24px;
+        text-transform: capitalize;
+        @include weight(bold);
+        line-height: normal;
+        font-family: $family;
+        color: $three-color;
+    }
+    .date {
+        padding-top: 10px;
+        color: $three-color;
+        font-size: $size;
+        line-height: normal;
+    }
+    p {
+        padding-top: 20px;
+        color: $three-color;
+        font-size: $size;
+        letter-spacing: 0.4px;
+        line-height: 25px;
+    }
+    //Notebook
+    @include notebook {
+        h6 {
+            padding-top: 15px;
+            font-size: 20px;
+        }
+        p {font-size: 12px; letter-spacing: 0; line-height: 22px;}
+    }
+    //Mobil
+    @include mobil {
+        .category {
+            top: 5px;
+            left: 5px;
+            padding: 5px 10px;
+            font-size: 10px;
+        }
+        h6 {
+            padding-top: 15px;
+            font-size: $size;
+            letter-spacing: 0;
+        }
+        p {font-size: 12px; letter-spacing: 0; padding-top: 5px;}
+    }
+}

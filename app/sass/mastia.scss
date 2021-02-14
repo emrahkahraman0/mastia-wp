@@ -1,0 +1,77 @@
+//Bu Sass Dosyası Emrah KAHRAMAN tarafından kodlanmıştır.
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+//Variable
+@import "variable/_grid";
+@import "variable/_variable";
+@import "variable/_mixins";
+
+//Partials
+@import "partials/_header";
+@import "partials/_home";
+@import "partials/_about";
+@import "partials/_services";
+@import "partials/_services-detail";
+@import "partials/_projects";
+@import "partials/_blog";
+@import "partials/_blog-detail";
+@import "partials/_contact";
+@import "partials/_footer";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $base-color;
+    width: 100%;
+    min-height: 100vh;
+    font-size: $size;
+    font-family: $family;
+    color: $primary-color;
+}
+
+.owl-carousel .owl-stage, .owl-carousel.owl-drag .owl-item{
+    -ms-touch-action: auto;
+    touch-action: auto;
+}
+
+.align-items {
+    @include flex();
+    @include align-items(center);
+}
+
+//404
+#error {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    //message
+    .message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%, -50%);
+        text-align: center;
+        h6 {
+            color: $secondary-color;
+            font-size: 7vw;
+            @include weight(bold);
+            letter-spacing: 10px;
+        }
+        p {
+            padding-top: 10px;
+            @include weight(medium);
+            font-size: 16px;
+            letter-spacing: 1px;
+            line-height: normal;
+        }
+    }
+    //X-Tablet
+    @include x-tablet {
+        .message {
+            p {font-size: 12px;}
+        }
+    }
+}

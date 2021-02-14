@@ -1,0 +1,162 @@
+@import "variable/_grid";
+@import "variable/_variable";
+@import "variable/_mixins";
+
+//Footer#
+#footer {
+    width: 100%;
+    padding: 50px 0 50px 0;
+    background-color: #161616;
+    //footer
+    .footer {
+        color: $base-color;
+        //&_info, &_links, &_news, &_touch
+        &_info, &_links, &_news, &_touch {
+            h6 {
+                font-size: 18px;
+                @include weight(bold);
+                text-transform: uppercase;
+                color: $secondary-color;
+                letter-spacing: 0.4px;
+                padding-bottom: 20px;
+            }
+        }
+        //&_info
+        &_info {
+            p {
+                @include weight(regular);
+                font-size: 12px;
+                line-height: normal;
+                letter-spacing: 0.2px;
+            }
+        }
+        //&_links
+        &_links {
+            ul {
+                li {
+                    position: relative;
+                    padding: 0 0 10px 15px;
+                    &:last-child {
+                        padding: 0 0 0 15px;
+                    }
+                    a {
+                        color: $base-color;
+                        text-transform: capitalize;
+                        font-size: $size;
+                        @include transition(0.3s);
+                        &:hover {
+                            color: $secondary-color;
+                        }
+                    }
+                    &::before {
+                        content: "\f054";
+                        font-family: "Font Awesome 5 Free";
+                        @include weight(bold);
+                        color: $secondary-color;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+        //&_news
+        &_news {
+            ul {
+                li {
+                    position: relative;
+                    padding: 0 0 10px 15px;
+                    &:last-child {
+                        padding: 0 0 0 15px;
+                    }
+                    a {
+                        color: $base-color;
+                        text-transform: capitalize;
+                        font-size: $size;
+                        @include transition(0.3s);
+                        &:hover {
+                            color: $secondary-color;
+                        }
+                    }
+                    &::before {
+                        content: "\f054";
+                        font-family: "Font Awesome 5 Free";
+                        @include weight(bold);
+                        color: $secondary-color;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+        &_touch {
+            p {
+                @include weight(regular);
+                font-size: 12px;
+                line-height: normal;
+                letter-spacing: 0.2px;
+            }
+            .icon-desc {
+                padding-top: 20px;
+                .icon-item {
+                    @include flex();
+                    @include align-items(center);
+                    padding-bottom: 10px;
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
+                    svg {color: $secondary-color}
+                    h5 {
+                        padding-left: 10px;
+                    }
+                }
+            }
+        }
+        //Large
+        @include large {
+            &_touch {margin-top: 30px;}
+        }
+        //Notebook
+        @include notebook {
+            &_news {margin-top: 30px;}
+        }
+        //Tablet
+        @include tablet {
+            &_links {margin-top: 30px;}
+        }
+        //Mobil
+        @include mobil {
+            //&_info, &_links, &_news, &_touch
+            &_info, &_links, &_news, &_touch {
+                h6 {font-size: $size; padding-bottom: 15px; line-height: normal;}
+                ul {
+                    li {
+                        a {font-size: 12px;}
+                    }
+                }
+                .icon-desc {
+                    .icon-item {
+                        h5 {font-size: 12px; line-height: normal;}
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Copyright#
+#copyright {
+    width: 100%;
+    padding: 20px 0 20px 0;
+    background-color: #000;
+    text-align: center;
+    //text
+    .center {
+        font-size: 12px;
+        color: $base-color;
+        line-height: normal;
+        text-transform: capitalize;
+        letter-spacing: 0.5px;
+    }
+}

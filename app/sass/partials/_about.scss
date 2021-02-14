@@ -1,0 +1,495 @@
+@import "variable/_grid";
+@import "variable/_variable";
+@import "variable/_mixins";
+
+//Page_Banner#
+#page_banner {
+    width: 100%;
+    background-color: $secondary-color;
+    padding: 20px 0 20px 0;
+    //page_banner
+    .page_banner {
+        @include flex();
+        @include justify-content(space-between);
+        @include align-items(center);
+        color: $base-color;
+        //&_title
+        &_title {
+            font-size: 24px;
+            @include weight(semi-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        //&_href
+        &_href {
+            span {text-transform: capitalize;}
+            a {color: $base-color; font-size: $size; text-transform: capitalize;}
+        }
+        //Tablet
+        @include tablet {
+            @include flex();
+            @include flex-direction(column);
+            //&_title
+            &_title {font-size: 18px;}
+            //&_href
+            &_href {
+                padding-top: 10px;
+            }
+        }
+        //Small
+        @include small {
+            //&_title
+            &_title {font-size: $size;}
+            //&_href
+            &_href {
+                a, span {font-size: 12px;}
+            }
+        }
+    }
+}
+
+//About_İnfo#
+#about_info {
+    width: 100%;
+    padding: 80px 0 80px 0;
+    //about_info
+    .about_info {
+        //&_image
+        &_image {
+            img {width: 100%}
+        }
+        //&_text
+        &_text {
+            h6 {
+                font-size: 30px;
+                text-transform: uppercase;
+                color: $secondary-color;
+                letter-spacing: 0.3px;
+                @include weight(semi-bold);
+            }
+            p {
+                padding-top: 20px;
+                color: $three-color;
+                font-size: $size;
+                line-height: 25px;
+            }
+            button {
+                margin-top: 20px;
+                padding: 15px;
+                background-color: $secondary-color;
+                cursor: pointer;
+                a {
+                    color: $base-color;
+                    font-size: $size;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        //Notebook
+        @include notebook {
+            //&_text
+            &_text {
+                margin-top: 30px;
+                h6 {font-size: 25px;}
+                p {padding-top: 15px;}
+            }
+        }
+        //X-Tablet
+        @include x-tablet {
+            //&_text
+            &_text {
+                h6 {font-size: 18px;}
+                p {padding-top: 15px; line-height: 22px;}
+                button {
+                    width: 100%;
+                    padding: 10px 0;
+                }
+            }
+        }
+        //Mobil
+        @include mobil {
+            //&_text
+            &_text {
+                h6 {font-size: $size; line-height: normal;}
+                p {padding-top: 10px; line-height: 18px; font-size: 12px;}
+                button {
+                    a {font-size: 12px;}
+                }
+            }
+        }
+    }
+}
+
+//About_Facts#
+#about_facts {
+    //about_facts
+    .about_facts {
+        text-align: center;
+        //&_item
+        &_item {
+            color: $base-color;
+            .icon {
+                width: 130px;
+                height: 130px;
+                line-height: 150px;
+                margin: 0 auto;
+                border: 2px solid $secondary-color;
+                @include border-radius(50%);
+                text-align: center;
+                @include transition(0.3s);
+                svg {color: $base-color}
+                &:hover {
+                    cursor: pointer;
+                    @include rotate(360deg);
+                }
+            }
+            h6 {
+                padding-top: 25px;
+                text-transform: uppercase;
+                font-size: 24px;
+                @include weight(semi-bold);
+                letter-spacing: 0.4px;
+            }
+            p {
+                padding-top: 15px;
+                font-size: $size;
+                line-height: 22px;
+                letter-spacing: 0.5px;
+            }
+        }
+    }
+    //Notebook
+    @include notebook {
+        padding: 80px 0 50px 0;
+        //about_facts
+        .about_facts {
+            &_item {margin-bottom: 30px;}
+        }
+    }
+    //Tablet
+    @include tablet {
+        //about_facts
+        .about_facts {
+            &_item {
+                .icon {
+                    width: 100px;
+                    height: 100px;
+                    line-height: 110px;
+                    svg {font-size: 30px;}
+                }
+                h6 {font-size: 18px;}
+            }
+        }
+    }
+    //Mobil
+    @include mobil {
+        //about_facts
+        .about_facts {
+            &_item {
+                .icon {
+                    width: 80px;
+                    height: 80px;
+                    line-height: 85px;
+                    svg {font-size: 20px;}
+                }
+                h6 {font-size: $size; line-height: normal; padding-top: 20px;}
+                p {font-size: 12px; line-height: 18px; padding-top: 10px;}
+            }
+        }
+    }
+    //X-Small
+    @include x-small {
+        //about_facts
+        .about_facts {
+            &_item {
+                .icon {
+                    width: 70px;
+                    height: 70px;
+                    line-height: 75px;
+                    svg {font-size: 23px;}
+                }
+                h6 {font-size: 12px; line-height: normal; padding-top: 20px;}
+                p {font-size: 10px; line-height: normal; padding-top: 10px;}
+            }
+        }
+    }
+}
+
+//About_Why#
+#about_why {
+    width: 100%;
+    padding: 80px 0 80px;
+    //about_why
+    .about_why {
+        //&_accordion
+        &_accordion {
+            h6 {
+                color: $secondary-color;
+                text-transform: uppercase;
+                @include weight(semi-bold);
+                font-size: 30px;
+                padding-bottom: 20px;
+            }
+            .accordion {
+                background-color: $secondary-color;
+                color: $base-color;
+                cursor: pointer;
+                padding: 15px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: $size;
+                @include transition(0.4s);
+                margin: 10px 0 10px 0;
+                &:last-child {
+                    margin: 0 0 0 0;
+                }
+            } 
+            .accordion {
+                &:after {
+                    content: '\002B';
+                    color: $base-color;
+                    font-weight: bold;
+                    float: right;
+                    margin-left: 5px;
+                }
+            }
+            .active:after {
+                content: "\2212";
+            }
+            .panel {
+                padding: 0 15px;
+                background-color: white;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                p {
+                    font-size: $size;
+                    line-height: normal;
+                    letter-spacing: 0.3px;
+                }
+            }
+        }
+        //&_text
+        &_text {
+            h6 {
+                color: $secondary-color;
+                text-transform: uppercase;
+                @include weight(semi-bold);
+                font-size: 30px;
+                padding-bottom: 20px;
+            }
+            p {
+                color: $three-color;
+                font-size: $size;
+                line-height: 22px;
+                letter-spacing: 0.3px;
+            }
+        }
+        //Notebook
+        @include notebook {
+            //&_accordion
+            &_accordion {
+                h6 {font-size: 25px;}
+            }
+            //&_text
+            &_text {
+                margin-top: 20px;
+                h6 {font-size: 25px;}
+            }
+        }
+        //X-Tablet
+        @include x-tablet {
+            //&_accordion
+            &_accordion {
+                h6 {font-size: 18px; padding-bottom: 15px;}
+            }
+            //&_text
+            &_text {
+                h6 {font-size: 18px; padding-bottom: 15px;}
+            }
+        }
+        //Mobil
+        @include mobil {
+            //&_accordion
+            &_accordion {
+                h6 {font-size: $size; padding-bottom: 10px;}
+                .accordion {
+                    font-size: 12px;
+                    margin: 8px 0 8px 0;
+                    &:last-child {
+                        margin: 0 0 0 0;
+                    }
+                }
+                .panel {
+                    p {font-size: 12px; line-height: normal;}
+                }
+            }
+            //&_text
+            &_text {
+                h6 {font-size: $size; padding-bottom: 10px;}
+            }
+        }
+    }
+}
+
+//About_Clients#
+#about_clients {
+    width: 100%;
+    padding: 80px 0 80px 0;
+    background: linear-gradient( rgba(75, 75, 75, .7), rgba(75, 75, 75, .7)), url('https://via.placeholder.com/1920x425');
+    @include bg-size(cover);
+    background-position: center;
+    h6 {
+        text-align: center;
+        color: $base-color;
+        font-size: 30px;
+        text-transform: uppercase;
+        line-height: normal;
+        @include weight(semi-bold);
+        //Notebook
+        @include notebook {
+            font-size: 25px;
+        }
+        //X-Tablet
+        @include x-tablet {
+            font-size: 18px;
+        }
+        //Small
+        @include small {
+            font-size: $size;
+        }
+    }
+    //about_clients_owl
+    .about_clients_owl {
+        position: relative;
+        padding-top: 30px;
+        .item {
+            @include flex();
+            @include align-items(center);
+            color: $base-color;
+            //item-image
+            .item-image {
+                padding-right: 50px;
+                img {width: 100%; @include border-radius(50%);}
+            }
+            //item-text
+            .item-text {
+                padding-left: 30px;
+                border-left: 2px solid $base-color;
+                font-size: $size;
+                p {letter-spacing: 0.3px; line-height: 23px;}
+                h4 {padding-top: 20px; text-transform: capitalize; line-height: normal;}
+                h5 {padding-top: 5px; text-transform: uppercase; line-height: normal;}
+            }
+        }
+        //Notebook
+        @include notebook {
+            .item {
+                @include flex();
+                @include flex-direction(column);
+                text-align: center;
+                .item-image {
+                    padding-right: 0;
+                    img {width: 70%; margin: 0 auto;}
+                }
+                .item-text {
+                    padding: 20px 0 0 0;
+                    border: none;
+                }
+            }
+        }
+        //X-Tablet
+        @include mobil {
+            .item {
+                .item-image {
+                    img {width: 100%;}
+                }
+                .item-text {
+                    font-size: 12px;
+                    p {line-height: normal;}
+                }
+            }
+        }
+        //owl-dots
+        .owl-dots {
+            margin-top: 25px;
+            .owl-dot {
+                span {background-color: $base-color;}
+            }
+            .active {
+                span {background-color: $secondary-color;}
+            }
+        }
+    }
+}
+
+//About_Team#
+#about_team {
+    width: 100%;
+    padding: 80px 0 50px 0;
+    h6 {
+        padding-left: 15px;
+        color: $secondary-color;
+        font-size: 30px;
+        text-transform: uppercase;
+        line-height: normal;
+        @include weight(semi-bold);
+        //Notebook
+        @include notebook {
+            text-align: center;
+            padding-left: 0;
+            font-size: 25px;
+        }
+        //X-Tablet
+        @include x-tablet {
+            font-size: 18px;
+        }
+        //Small
+        @include small {
+            font-size: $size;
+        }
+    }
+    //about_team
+    .about_team {
+        padding-top: 40px;
+        //&_item
+        &_item {
+            text-align: center;
+            margin-bottom: 30px;
+            img {width: 100%}
+            h4 {
+                padding-top: 10px;
+                text-transform: capitalize;
+                font-size: 22px;
+                line-height: normal;
+                color: $three-color;
+                @include weight(semi-bold);
+                letter-spacing: 0.4px;
+            }
+            h5 {
+                padding-top: 4px;
+                color: $primary-color;
+                font-size: 12px;
+                line-height: normal;
+                text-transform: capitalize;
+            }
+        }
+        //Tablet
+        @include tablet {
+            //&_item
+            &_item {
+                h4 {font-size: 18px;}
+            }
+        }
+        //Mobil
+        @include mobil {
+            padding-top: 30px;
+            //&_item
+            &_item {
+                h4 {font-size: $size;}
+            }
+        }
+    }
+}

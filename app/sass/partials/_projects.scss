@@ -1,0 +1,142 @@
+@import "variable/_grid";
+@import "variable/_variable";
+@import "variable/_mixins";
+
+//Page_Banner#
+#page_banner {
+    width: 100%;
+    background-color: $secondary-color;
+    padding: 20px 0 20px 0;
+    //page_banner
+    .page_banner {
+        @include flex();
+        @include justify-content(space-between);
+        @include align-items(center);
+        color: $base-color;
+        //&_title
+        &_title {
+            font-size: 24px;
+            @include weight(semi-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        //&_href
+        &_href {
+            span {text-transform: capitalize;}
+            a {color: $base-color; font-size: $size; text-transform: capitalize;}
+        }
+        //Tablet
+        @include tablet {
+            @include flex();
+            @include flex-direction(column);
+            //&_title
+            &_title {font-size: 18px;}
+            //&_href
+            &_href {
+                padding-top: 10px;
+            }
+        }
+        //Small
+        @include small {
+            //&_title
+            &_title {font-size: $size;}
+            //&_href
+            &_href {
+                a, span {font-size: 12px;}
+            }
+        }
+    }
+}
+
+#our_projects {
+    width: 100%;
+    padding: 80px 0 50px 0;
+    //title
+    .title {
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        @include weight(semi-bold);
+        line-height: normal;
+        color: $secondary-color;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            width: 70px;
+            height: 2px;
+            margin: 0 auto;
+            background-color: $secondary-color;
+        }
+        //Notebook
+        @include notebook {
+            font-size: 25px;
+        }
+        //X-Tablet
+        @include x-tablet {
+            font-size: 20px;
+        }
+        //Small
+        @include small {
+            font-size: $size;
+        }
+    }
+    //our_projects
+    .our_projects {
+        padding-top: 60px;
+        //&_item
+        &_item {
+            text-align: center;
+            margin-bottom: 30px;
+            img {width: 100%}
+            .project_name {
+                padding-top: 12px;
+                line-height: normal;
+                a {
+                    color: $three-color;
+                    font-size: 20px;
+                    text-transform: uppercase;
+                    @include weight(semi-bold);
+                }
+            }
+            button {
+                margin-top: 15px;
+                width: 100%;
+                background-color: $secondary-color;
+                padding: 10px 0;
+                a {
+                    color: $base-color;
+                    font-size: $size;
+                    text-transform: uppercase;
+                    @include weight(bold);
+                }
+            }
+        }
+        //Tablet
+        @include tablet {
+            &_item {
+                .project_name {
+                    line-height: normal;
+                    a {font-size: 16px;}
+                }
+            }
+        }
+        //Mobil
+        @include mobil {
+            &_item {
+                .project_name {
+                    padding-top: 8px;
+                    a {font-size: 12px;}
+                }
+            }
+            button {
+                margin-top: 12px;
+                padding: 8px 0;
+                a {font-size: 12px;}
+            }
+        }
+    }
+}
