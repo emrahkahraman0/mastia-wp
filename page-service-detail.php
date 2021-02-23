@@ -32,7 +32,7 @@ get_header(); ?>
 
             <div class="service_detail_image col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <?php if(has_post_thumbnail()): ?>
-                    <img src="<?php the_post_thumbnail_url('large'); ?>" class="img-fluid">
+                    <img src="<?php the_post_thumbnail_url(''); ?>" class="img-fluid">
                 <?php endif; ?>
             </div>
             <!-- service_detail_image -->
@@ -60,7 +60,7 @@ get_header(); ?>
         <div class="services_bottom_owl owl-carousel owl-theme">
 
         <?php if(have_posts() ) : ?>
-        <?php $loop = new WP_Query ( array('post_type' => 'page', 'post__ın' => array( 299,295,293,291,297,231,) ) ); ?>
+        <?php $loop = new WP_Query ( array('post_type' => 'page', 'post__ın' => array('299,295,293,291,297,231') ) ); ?>
         <?php while ($loop->have_posts()) : $loop->the_post(); ?>
 
             <div class="item">

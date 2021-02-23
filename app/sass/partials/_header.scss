@@ -1,6 +1,4 @@
-@import "variable/_grid";
-@import "variable/_variable";
-@import "variable/_mixins";
+/////HEADER.HTML
 
 //Top_Header#
 #top_header {
@@ -73,13 +71,14 @@
       }
       //menu
       .menu {
-        li {
+        >li {
           display: inline-block;
+          position: relative;
           margin-right: 15px;
           &:last-child {
             margin-right: 0;
           }
-          a {
+          >a {
             color: $three-color;
             @include weight(semi-bold);
             font-family: $family;
@@ -101,6 +100,51 @@
               &::before {
                 width: 100%;
               }
+            }
+          }
+          ul {
+            width: 200px;
+            position: absolute;
+            top: 37px;
+            left: 0;
+            z-index: 1;
+            background-color: $three-color;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(0.4s);
+            li {
+              display: block;
+              padding: 10px 12px 10px 12px;
+              a {
+                color: $base-color;
+                @include weight(bold);
+                font-size: $size;
+                text-transform: uppercase;
+                position: relative;
+                &::before {
+                  position: absolute;
+                  width: 0;
+                  margin: -5px 0;
+                  @include transition(0.4s);
+                  content: "";
+                  background-color: $base-color;
+                  height: 4px;
+                  border-radius: 2px;
+                  left: 0;
+                  bottom: 0;
+                }
+                &:hover {
+                  &::before {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+          &:hover {
+            ul {
+              opacity: 1;
+              visibility: visible;
             }
           }
         }
@@ -152,6 +196,17 @@
               position: relative;
               &::before {
                 background-color: $secondary-color;
+              }
+            }
+            ul {
+              width: 100%;
+              top: 30px;
+              li {
+                padding: 7px 0;
+                &:last-child {
+                  padding: 7px 0;
+                }
+                a {font-size: 12px; line-height: normal;}
               }
             }
           }

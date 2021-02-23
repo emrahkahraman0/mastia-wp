@@ -1,6 +1,4 @@
-@import "variable/_grid";
-@import "variable/_variable";
-@import "variable/_mixins";
+/////ABOUT.HTML
 
 //Page_Banner#
 #page_banner {
@@ -12,6 +10,7 @@
         @include flex();
         @include justify-content(space-between);
         @include align-items(center);
+        text-align: center;
         color: $base-color;
         //&_title
         &_title {
@@ -19,6 +18,7 @@
             @include weight(semi-bold);
             text-transform: uppercase;
             letter-spacing: 0.4px;
+            a {color: $base-color;}
         }
         //&_href
         &_href {
@@ -30,10 +30,10 @@
             @include flex();
             @include flex-direction(column);
             //&_title
-            &_title {font-size: 18px;}
+            &_title {font-size: 18px; line-height: normal;}
             //&_href
             &_href {
-                padding-top: 10px;
+                padding-top: 7px; line-height: normal;
             }
         }
         //Small
