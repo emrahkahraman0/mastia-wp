@@ -60,7 +60,7 @@
         </div>
         <!-- home_services -->
 
-        <?php endif; ?>
+    <?php endif; ?>
 
     </div>
     <!-- container -->
