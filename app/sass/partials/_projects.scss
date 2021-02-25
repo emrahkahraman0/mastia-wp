@@ -41,24 +41,33 @@
         padding-top: 60px;
         //&_item
         &_item {
-            text-align: center;
             margin-bottom: 30px;
             img {width: 100%}
-            .project_name {
-                padding-top: 12px;
+            h6 {
+                padding-top: 15px;
                 line-height: normal;
                 a {
-                    color: $three-color;
-                    font-size: 20px;
+                    color: $secondary-color;
                     text-transform: uppercase;
                     @include weight(semi-bold);
+                    font-size: 18px;
+                    letter-spacing: 0.3px;
                 }
+            }
+            p {
+                padding-top: 7px;
+                color: $three-color;
+                font-size: $size;
+                line-height: 22px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3; /*Kaç Stırda sınırlamak istiyorsanız */
+                -webkit-box-orient: vertical; 
+                overflow:hidden;
             }
             button {
                 margin-top: 15px;
-                width: 100%;
                 background-color: $secondary-color;
-                padding: 10px 0;
+                padding: 10px 20px;
                 a {
                     color: $base-color;
                     font-size: $size;
@@ -67,27 +76,22 @@
                 }
             }
         }
-        //Tablet
-        @include tablet {
-            &_item {
-                .project_name {
-                    line-height: normal;
-                    a {font-size: 16px;}
-                }
-            }
-        }
         //Mobil
         @include mobil {
             &_item {
-                .project_name {
-                    padding-top: 8px;
+                text-align: center;
+                h6 {
+                    a {font-size: $size;}
+                }
+                p {
+                    font-size: 12px;
+                    line-height: normal;
+                }
+                button {
+                    width: 100%;
+                    padding: 10px 3px;
                     a {font-size: 12px;}
                 }
-            }
-            button {
-                margin-top: 12px;
-                padding: 8px 0;
-                a {font-size: 12px;}
             }
         }
     }

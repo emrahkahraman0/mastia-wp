@@ -190,7 +190,7 @@ background-size: cover; background-position: center;">
     
         ?>
 
-            <div class="about_team_item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <div class="about_team_item col-xl-4 col-lg-4 col-md-6 col-sm-12">
                 <img src="<?php echo $team_image; ?>" class="img-fluid" alt="">
                 <h4><?php echo $team_name; ?></h4>
                 <h5><?php echo $team_job; ?></h5>

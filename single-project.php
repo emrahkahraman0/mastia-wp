@@ -20,45 +20,47 @@
 </div>
 <!-- page_banner# -->
 
-<div id="service_detail">
+<div id="projects_detail">
 
     <div class="container">
 
-        <div class="service_detail align-items row">
+        <div class="projects_detail align-items row">
 
         <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
-            <div class="service_detail_image col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="projects_detail_image col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <?php if(has_post_thumbnail()): ?>
                     <img src="<?php the_post_thumbnail_url(''); ?>" class="img-fluid">
                 <?php endif; ?>
             </div>
-            <!-- service_detail_image -->
-            <div class="service_detail_text col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <!-- projects_detail_image -->
+            <div class="projects_detail_text col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <h6><?php the_title(); ?></h6>
-                <p><?php the_content('', ''); ?></p>
+                <p>
+                    <?php the_content('', ''); ?>
+                </p>
             </div>
-            <!-- service_detail_text -->
+            <!-- projects_detail_text -->
 
         <?php endwhile; endif; ?>
 
         </div>
-        <!-- service_detail -->
+        <!-- projects_detail -->
 
     </div>
     <!-- container -->
 
 </div>
-<!-- service_detail# -->
+<!-- projects_detail# -->
 
-<div id="services_bottom">
+<div id="projects_bottom">
 
     <div class="container">
 
-        <div class="services_bottom_owl owl-carousel owl-theme">
+        <div class="projects_bottom_owl owl-carousel owl-theme">
 
         <?php if(have_posts() ) : ?>
-        <?php $loop = new WP_Query ( array('post_type' => 'service', 'post__ın' => array() ) ); ?>
+        <?php $loop = new WP_Query ( array('post_type' => 'project', 'post__ın' => array() ) ); ?>
         <?php while ($loop->have_posts()) : $loop->the_post(); ?>
 
             <div class="item">
@@ -75,12 +77,12 @@
         <?php endif; ?>
 
         </div>
-        <!-- services_bottom_owl -->
+        <!-- projects_bottom_owl -->
 
     </div>
     <!-- container -->
 
 </div>
-<!-- services_bottom# -->
+<!-- projects_bottom# -->
 
 <?php get_footer(); ?>
