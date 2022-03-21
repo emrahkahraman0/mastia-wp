@@ -15,8 +15,8 @@ return false;
 
 //Logo Ekleme
 add_theme_support( 'custom-logo', array(
-	'height'      => 50,
-	'width'       => 145,
+	'height'      => 99,
+	'width'       => 281,
 	'flex-height' => true,
 	'flex-width'  => true,
 	'header-text' => array( 'site-title', 'site-description' ),
@@ -63,6 +63,17 @@ echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagen
 if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&raquo;</a>";
 echo "</div>\n";
 }
-}
+};
+
+//Widgets
+if ( function_exists('register_sidebar') ) {
+    register_sidebar(array(
+        'name' => 'Widgets',
+        'before_widget' => '<div class="sidebar-widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="sidebar-widget-title">',
+        'after_title' => '</h3>',
+    ));
+};
 
 ?>

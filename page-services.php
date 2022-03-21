@@ -2,25 +2,33 @@
 /*Template Name: Services Page*/
 get_header(); ?>
 
-<div id="page_banner">
+<div id="page_services">
 
     <div class="container">
-    
-        <div class="page_banner">
-        
-            <div class="page_banner_title"><?php the_title(); ?></div>
-            <div class="page_banner_href">
-                <a href="<?php bloginfo('url'); ?>">Home</a> <span>></span> <span><?php the_title(); ?></span>
+
+        <div class="page_services">
+
+            <div class="page_services_title">
+                services
             </div>
-        
+            <!-- page_services_title -->
+            <div class="page_services_link">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><span>></span></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+            <!-- page_services_link -->
+
         </div>
-        <!-- page_banner -->
+        <!-- page_services -->
 
     </div>
     <!-- container -->
 
 </div>
-<!-- page_banner# -->
+<!-- page_services# -->
 
 <?php get_template_part( 'templates/service', 'page' ); ?>
 

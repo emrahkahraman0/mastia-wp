@@ -1,66 +1,84 @@
-<?php get_header(); ?>
+<?php get_header();
 
-<div id="home-slider">
+$services_href = get_field('services_href');
+$projects_href = get_field('projects_href');
+$blogs_href = get_field('blogs_href');
 
-    <?php if( have_rows('home_slider_item') ): ?>
+?>
 
-    <div class="home-slider-owl owl-carousel owl-theme">
+<div id="home_slider">
 
-    <?php while( have_rows('home_slider_item') ): the_row();
+<?php if( have_rows('home_slider') ): ?>
+
+    <div class="home_slider owl-carousel owl-theme">
+
+    <?php while( have_rows('home_slider') ): the_row();
     
         //vars
-        $slider_item_image = get_sub_field('slider_item_image');
-        $slider_item_heading = get_sub_field('slider_item_heading');
-        $slider_item_desc = get_sub_field('slider_item_desc');
-        $slider_item_button = get_sub_field('slider_item_button');
-        $slider_item_button_href = get_sub_field('slider_item_button_href');
+        $home_slider_image = get_sub_field('home_slider_image');
+        $home_slider_heading = get_sub_field('home_slider_heading');
+        $home_slider_desc = get_sub_field('home_slider_desc');
+        $home_slider_button = get_sub_field('home_slider_button');
+        $home_slider_href = get_sub_field('home_slider_href');
     
     ?>
 
-        <div class="item">
-            <img src="<?php echo $slider_item_image; ?>" alt="">
-            <div class="item-overlay">
-                <h6><?php echo $slider_item_heading; ?></h6>
-                <p><?php echo $slider_item_desc; ?></p>
-                <button><a href="<?php echo $slider_item_button_href; ?>"><?php echo $slider_item_button; ?></a></button>
+        <div class="home_slider_item">
+            <img src="<?php echo $home_slider_image; ?>" class="img-fluid" alt="">
+            <div class="slider_caption">
+                <h6><?php echo $home_slider_heading; ?></h6>
+                <p><?php echo $home_slider_desc; ?></p>
+                <button><a href="<?php echo $home_slider_href; ?>"><?php echo $home_slider_button; ?></a></button>
             </div>
-            <!-- item-overlay -->
+            <!-- slider_caption -->
         </div>
-        <!-- item -->
+        <!-- home_slider_item -->
 
-    <?php endwhile; ?>
+        <?php endwhile; ?>
 
     </div>
-    <!-- home-slider-owl -->
+    <!-- home_slider -->
 
     <?php endif; ?>
 
 </div>
-<!-- home-slider# -->
+<!-- home_slider# -->
 
 <div id="home_services">
 
     <div class="container">
 
-    <?php if( have_rows('home_services_item') ): ?>
+        <div class="title">recent services</div>
 
-        <div class="home_services row">
+        <div class="home_services owl-carousel owl-theme">
 
-        <?php while( have_rows('home_services_item') ): the_row(); ?>
+                <?php if(have_posts() ) : ?>
+                <?php $loop = new WP_Query ( array('post_type' => 'service', 'post__ın' => array() ) ); ?>
+                <?php while ($loop->have_posts()) : $loop->the_post(); ?>
 
-            <div class="home_services_item col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <?php echo get_sub_field('home_services_icon'); ?>
-                <h6><?php echo get_sub_field('home_services_heading'); ?></h6>
-                <p><?php echo get_sub_field('home_services_desc'); ?></p>
-            </div>
-            <!-- home_services_item -->
+                    <div class="home_services_item">
+                        <?php if(has_post_thumbnail()): ?>
+                            <img src="<?php the_post_thumbnail_url(''); ?>" class="img-fluid">
+                        <?php endif; ?>
+                        <h6><a href="<?php the_permalink(''); ?>"><?php the_title(); ?></a></h6>
+                        <p><?php the_excerpt(); ?></p>
+                        <button><a href="<?php the_permalink(''); ?>">read more</a></button>
+                    </div>
+                    <!-- home_services_item -->
 
-        <?php endwhile; ?>
+                <?php endwhile; ?>
+                    <?php wp_reset_query(); ?>
+                <?php endif; ?>
 
         </div>
         <!-- home_services -->
 
-    <?php endif; ?>
+        <div class="all_button">
+            <?php if($services_href): ?>
+                <button><a href="<?php echo $services_href['url']; ?>" target="<?php echo $services_href['target']; ?>">all services</a></button>
+            <?php endif; ?>
+        </div>
+        <!-- all_button -->
 
     </div>
     <!-- container -->
@@ -68,37 +86,67 @@
 </div>
 <!-- home_services# -->
 
+<div id="home_about">
+
+    <div class="container">
+
+        <div class="home_about align-item row">
+
+            <div class="home_about_image col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <img src="<?php the_field('home_about_image') ?>" class="img-fluid" alt="">
+            </div>
+            <!-- home_about_image -->
+            <div class="home_about_text col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <h6><?php the_field('home_about_heading') ?></h6>
+                <p><?php the_field('home_about_desc') ?></p>
+                <button><a href="<?php the_field('home_about_href') ?>" target="_blank">about us</a></button>
+            </div>
+            <!-- home_about_text -->
+
+        </div>
+        <!-- home_about -->
+
+    </div>
+    <!-- container -->
+
+</div>
+<!-- home_about# -->
+
 <div id="home_projects">
 
     <div class="container">
 
-    <div class="title"><?php the_field('home_project_title'); ?></div>
+        <div class="title">recent projects</div>
 
-    <?php if( have_rows('home_project_item') ): ?>
+        <div class="home_projects owl-carousel owl-theme">
 
-        <div class="home_projects_owl owl-carousel owl-theme">
+            <?php if(have_posts() ) : ?>
+            <?php $loop = new WP_Query ( array('post_type' => 'project', 'post__ın' => array() ) ); ?>
+            <?php while ($loop->have_posts()) : $loop->the_post(); ?>
 
-        <?php while( have_rows('home_project_item') ): the_row(); ?>
-
-            <div class="item">
-                <a href="<?php echo get_sub_field('home_project_large'); ?>" data-lightbox="image-1" data-title="My caption">
-                <img src="<?php echo get_sub_field('home_project_small'); ?>" class="img-fluid" alt="">
-                <div class="item_overlay">
-                    <div class="icon">
-                        <i class="fal fa-plus fa-4x"></i>
-                    </div>
-                </div>
-                <!-- item_overlay -->
-                </a>
+            <div class="home_projects_item">
+                <?php if(has_post_thumbnail()): ?>
+                    <img src="<?php the_post_thumbnail_url(''); ?>" class="img-fluid">
+                <?php endif; ?>
+                <h6><a href="<?php the_permalink(''); ?>"><?php the_title(); ?></a></h6>
+                <p><?php the_excerpt(); ?></p>
+                <button><a href="<?php the_permalink(''); ?>">read more</a></button>
             </div>
-            <!-- item -->
+            <!-- home_projects_item -->
 
-        <?php endwhile; ?>
+            <?php endwhile; ?>
+                <?php wp_reset_query(); ?>
+            <?php endif; ?>
 
         </div>
-        <!-- home_projects_owl -->
+        <!-- home_projects -->
 
-    <?php endif; ?>
+        <div class="all_button">
+            <?php if($projects_href): ?>
+                <button><a href="<?php echo $projects_href['url']; ?>" target="<?php echo $projects_href['target']; ?>">all projects</a></button>
+            <?php endif; ?>
+        </div>
+        <!-- all_button -->
 
     </div>
     <!-- container -->
@@ -106,71 +154,85 @@
 </div>
 <!-- home_projects# -->
 
-<div id="home_facts">
+<div id="home_counter" style="width: 100%; padding: 50px 0 50px 0; background: linear-gradient( to bottom,rgba(38,161,228, 0.7),rgba(38,161,228, 0.7) ),url(<?php the_field('counter_bg'); ?>); background-size: cover; background-position: center;">
 
     <div class="container">
 
-        <div class="home_facts row">
+        <div class="home_counter row">
 
-            <div class="home_facts_item col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="count"><?php the_field('fact_count_1'); ?></div>
-                <h6><?php the_field('fact_text_1'); ?></h6>
+            <div class="home_counter_item col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <h6 class="count"><?php the_field('count_1'); ?></h6>
+                <p><?php the_field('heading_1'); ?></p>
             </div>
-            <!-- home_facts_item -->
-            <div class="home_facts_item col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="count"><?php the_field('fact_count_2'); ?></div>
-                <h6><?php the_field('fact_text_2'); ?></h6>
+            <!-- home_counter_item -->
+            <div class="home_counter_item col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <h6 class="count"><?php the_field('count_2'); ?></h6>
+                <p><?php the_field('heading_2'); ?></p>
             </div>
-            <!-- home_facts_item -->
-            <div class="home_facts_item col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="count"><?php the_field('fact_count_3'); ?></div>
-                <h6><?php the_field('fact_text_3'); ?></h6>
+            <!-- home_counter_item -->
+            <div class="home_counter_item col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <h6 class="count"><?php the_field('count_3'); ?></h6>
+                <p><?php the_field('heading_3'); ?></p>
             </div>
-            <!-- home_facts_item -->
-            <div class="home_facts_item col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="count"><?php the_field('fact_count_4'); ?></div>
-                <h6><?php the_field('fact_text_4'); ?></h6>
+            <!-- home_counter_item -->
+            <div class="home_counter_item col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <h6 class="count"><?php the_field('count_4'); ?></h6>
+                <p><?php the_field('heading_4'); ?></p>
             </div>
-            <!-- home_facts_item -->
+            <!-- home_counter_item -->
 
         </div>
-        <!-- home_facts -->
+        <!-- home_counter -->
 
     </div>
     <!-- container -->
 
 </div>
-<!-- home_facts# -->
+<!-- home_counter# -->
 
 <div id="home_blog">
 
     <div class="container">
 
-    <div class="title">from blog</div>
+        <div class="title">from blog</div>
 
-        <div class="home_blog_owl owl-carousel owl-theme">
+        <div class="home_blog owl-carousel owl-theme">
 
-        <?php query_posts('showposts=3'); ?> 
+            <?php query_posts('showposts=4'); ?>
+            <?php while (have_posts()) : the_post(); ?>
 
-        <?php while (have_posts()) : the_post(); ?> 
-
-            <div class="item">
+            <div class="home_blog_item">
                 <?php if(has_post_thumbnail()): ?>
-                    <img src="<?php the_post_thumbnail_url('small'); ?>" class="img-fluid">
+                    <img src="<?php the_post_thumbnail_url('large'); ?>" class="img-fluid">
                 <?php endif; ?>
-                <div class="item_desc">
-                    <h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
-                    <div class="date"><?php the_time('j F Y') ?></div>
-                    <p><?php the_excerpt(); ?></p>
-                    <button><a href="<?php the_permalink(); ?>">read more</a></button>
+                <h6><a href="<?php the_permalink(''); ?>"><?php the_title(); ?></a></h6>
+                <div class="blog_desc">
+                    <div class="date">
+                        <i class="icon-calendar"></i><span><?php the_time("F j Y"); ?> </span>
+                    </div>
+                    <div class="author">
+                        <i class="icon-user"></i><span><?php the_author(''); ?></span>
+                    </div>
                 </div>
+                <!-- blog_desc -->
+                <p><?php the_excerpt(); ?></p>
+                <button><a href="<?php the_permalink(''); ?>">read more</a></button>
             </div>
-            <!-- item -->
+            <!-- home_blog_item -->
 
-        <?php endwhile;?>
+            <?php endwhile;?>
 
         </div>
-        <!-- home_blog-owl -->
+        <!-- home_blog -->
+
+        <div class="all_button">
+            <?php if($blogs_href): ?>
+                <button>
+                    <a href="<?php echo $blogs_href['url']; ?>" target="<?php echo $blogs_href['target']; ?>">all blogs</a>
+                </button>
+            <?php endif; ?>
+        </div>
+        <!-- all_button -->
 
     </div>
     <!-- container -->
